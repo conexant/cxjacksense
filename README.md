@@ -4,11 +4,20 @@
 
 Before using Jacksense app on **Raspberry Pi** (or **RPi**), the following things we have to check first:
 
-
+- Compile cxjacksense application
 - Check if Solana driver supports jack detection
 - Connect RPi GPIO (BCM 25) to EVK's JP22-pin2
-- Copy pre-built excutable application (cxjacksense) and routing path scripts to RPi
+- Copy the excutable application (cxjacksense) and routing path scripts to RPi
 - Modify sound card device and input event based on the system enviroment
+
+### Compile cxjacksense application
+Since we have a Makefile in the package, it is easy to be done by using "make" command.
+
+```
+$ make
+```
+
+The excutable application is generated with name "cxjacksense"
 
 ### Check if Solana driver supports jack detection
 We are using one GPIO on RPi for the lineout jack detection. Application will query current jack status through mixer command.
@@ -38,7 +47,7 @@ $ amixer -c0 cget iface=CARD,name='Headphones Jack'
 
 It can display **'values=on'** when headphone is plugged in and **'values=off'** when headphone is unplugged.
 
-### Copy pre-built excutable application (cxjacksense) and routing path scripts to RPi
+### Copy the excutable application (cxjacksense) and routing path scripts to RPi
 
 There are 3 shell scripts and 1 excutatble file in the package.
 

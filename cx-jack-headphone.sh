@@ -9,7 +9,7 @@ CXSNDDEV="hw:0"
 #disable Headphone amp for lineout routing.
 amixer -D$CXSNDDEV cset name='PortA HP Amp Switch' off
 #enable Headphone amp for headphone routing.
-amixer -D$CXSNDDEV cset name='PortA HP Amp Switch' on
+#amixer -D$CXSNDDEV cset name='PortA HP Amp Switch' on
 
 echo "XX:$USING_DAC2"
 if [ $USING_DAC2 = "yes" ] ; then # HP through DAC2
@@ -29,7 +29,5 @@ else
 	amixer -D$CXSNDDEV cset name='I2S DAC1L Switch' on
 	amixer -D$CXSNDDEV cset name='I2S DAC1R Switch' on
 	amixer -D$CXSNDDEV cset name='PortG Out En Switch' off
-
-##### add DSP setting below #####
 
 fi

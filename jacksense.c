@@ -1,3 +1,16 @@
+/*
+ * jacksense.c  --  Jacksense application using on RPi Linux
+ *
+ * Copyright:   (C) 2017 Conexant Systems, LLC.
+ * Author: 	Jerry Chang, <jerry.chang@conexant.com>
+ *
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ */
+
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -17,6 +30,7 @@ int main(int argc, char *argv[])
 		input = argv[1];
 	else {
 		fprintf(stderr, "Specify input device path. eq /dev/input/event2\n");
+		system("echo \"Need to specify input device path\" > /tmp/log.txt");
 		return 2;
 	}
 
@@ -51,9 +65,9 @@ int main(int argc, char *argv[])
 						system("echo \"headphone unplugged\" > /tmp/log.txt");
 					}
 				}
-//				#fprintf(stdout, "event type =%d.\n", event.type);
-//				#fprintf(stdout, "      code =%d.\n", event.code);
-//				#fprintf(stdout, "      value =%d.\n", event.value);
+				//fprintf(stdout, "event type =%d.\n", event.type);
+				//#fprintf(stdout, "      code =%d.\n", event.code);
+				//#fprintf(stdout, "      value =%d.\n", event.value);
 			}
 		} while (bytes == (ssize_t)-1 && errno == EINTR);
 
